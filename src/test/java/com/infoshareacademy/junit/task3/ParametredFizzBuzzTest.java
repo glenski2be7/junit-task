@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.stream.Stream;
 
@@ -63,6 +61,17 @@ public class ParametredFizzBuzzTest {
                 Arguments.arguments(5, "Buzz"),
                 Arguments.arguments(15, "FizzBuzz")
         );
+    }
+
+    @DisplayName("Should return expected value")
+    @ParameterizedTest(name = "{index} - for {0} should return {1}")
+    @CsvFileSource(resources = "/test_data.csv", delimiter = ';', numLinesToSkip = 1)
+    @CsvSource(value = {"110, Buzz","204,Fizz"})
+    public void shouldReturnExpectedValueFromCsv (int number, String expectedResult) {
+
+        String actualResult = fizzBuzz.play(number);
+
+        Assertions.assertEquals(expectedResult, actualResult);
     }
 
 }
