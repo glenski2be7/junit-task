@@ -17,7 +17,7 @@ class FizzBuzzTest {
         FizzBuzz fizzBuzz = new FizzBuzz();
 
         String result = fizzBuzz.play(3);
-        assertEquals("Buzz", result);
+        assertEquals("Fizz", result);
     }
 
     @Test
@@ -26,7 +26,7 @@ class FizzBuzzTest {
         FizzBuzz fizzBuzz = new FizzBuzz();
 
         String result = fizzBuzz.play(5);
-        assertEquals("Fizz", result, "Number isnt visible by 5");
+        assertEquals("Buzz", result, "Number isnt visible by 5");
     }
 
     @Test
